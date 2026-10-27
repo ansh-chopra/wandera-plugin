@@ -1,0 +1,108 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "wandera",
+  "version": "1.0.2",
+  "description": "Generate AI videos with models such as Seedance, Kling and Veo, compare them side by side, and turn them into Meta video ads.",
+  "author": {
+    "name": "Zero Billion",
+    "email": "ansh@zerobillion.ai",
+    "url": "https://www.zerobillion.ai"
+  },
+  "homepage": "https://wandera.ai/mcp",
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "ai-video",
+    "seedance",
+    "kling",
+    "veo",
+    "meta-ads",
+    "marketing"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Wandera",
+        "shortDescription": "AI video and Meta ads",
+        "longDescription": "Wandera generates short AI videos from a text description using leading video models such as Seedance, Kling and Veo, and connects to your Facebook and Instagram ad account.\n\nDescribe a video and Wandera suggests a suitable model, shows the cost before generating, and returns a hosted MP4 link. You can also run one prompt on several models and get a side-by-side comparison page.\n\nIf you connect a Meta ad account, the same conversation can upload a video, create a campaign, ad set and ad (created paused unless you ask otherwise), pause or resume ads, change daily budgets, and report spend, CTR, CPA and ROAS.\n\nBuilt by Zero Billion.",
+        "developerName": "Zero Billion",
+        "category": "Creativity",
+        "capabilities": [
+          "Generate AI videos",
+          "Compare video models",
+          "Create Meta video ads",
+          "Read Meta ads insights"
+        ],
+        "websiteURL": "https://wandera.ai/chatgpt",
+        "supportURL": "https://wandera.ai/mcp",
+        "privacyPolicyURL": "https://wandera.ai/privacy",
+        "termsOfServiceURL": "https://wandera.ai/terms",
+        "defaultPrompt": [
+          "Make a 5 second 9:16 video of my product with Seedance",
+          "Compare Kling and Veo on a slow-motion coffee pour",
+          "Which of my Meta ads had the best ROAS last week?"
+        ],
+        "brandColor": "#1A8FD1",
+        "brandColorDark": "#45C4FF",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "onboardingSkill": "./skills/get-started/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Pick a model for a cheap test",
+              "prompt": "Which video model is cheapest for a quick 9:16 test?",
+              "tools_triggered": "list_video_models",
+              "expected_behavior": "Lists models with credit prices and recommends the cheapest one that supports 9:16, without generating anything."
+            },
+            {
+              "description": "Quote a price before spending",
+              "prompt": "How much would a 5 second 720p Kling 3.0 Pro clip cost?",
+              "tools_triggered": "estimate_video_cost",
+              "expected_behavior": "Returns a credit and dollar quote for that exact clip and spends nothing."
+            },
+            {
+              "description": "Generate a video",
+              "prompt": "Make a 5s 9:16 video of a golden retriever surfing at sunset with Seedance 2.0 Fast.",
+              "tools_triggered": "generate_video, get_video",
+              "expected_behavior": "Starts the generation, reports progress, and returns a playable MP4 link when done (about 1-2 minutes)."
+            },
+            {
+              "description": "Compare models side by side",
+              "prompt": "Compare Veo 3.1 Fast and Kling 3.0 Standard on: a latte being poured in slow motion.",
+              "tools_triggered": "compare_video_models",
+              "expected_behavior": "Starts both generations and returns a link to a side-by-side comparison page."
+            },
+            {
+              "description": "Check balance and history",
+              "prompt": "What's my Wandera balance, and what videos did I make recently?",
+              "tools_triggered": "account, list_my_videos",
+              "expected_behavior": "Shows the credit balance and plan, and lists recent generations with their status and links."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unsupported duration",
+              "prompt": "Generate a 60 second video with Veo 3.1."
+            },
+            {
+              "description": "Meta tools without a connected ad account",
+              "prompt": "Show my Meta ad campaigns."
+            },
+            {
+              "description": "Unrelated request",
+              "prompt": "Book me a flight to Paris next Friday."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin does not sell anything inside ChatGPT. Users who already have a Wandera account use their existing credits; plans are described on wandera.ai."
+      },
+      "publication": {
+        "release_notes": "Initial release: AI video generation across Seedance, Kling, Veo, Grok Imagine, Wan and MiniMax, model comparison pages, and Meta video ad tools."
+      }
+    }
+  }
+}

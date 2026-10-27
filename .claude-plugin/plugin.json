@@ -1,0 +1,9 @@
+{
+  "name": "wandera",
+  "version": "1.0.2",
+  "description": "Make AI videos with Seedance, Kling, Veo and more, compare models side by side, and launch the winner as a Meta ad.",
+  "author": { "name": "Zero Billion", "email": "ansh@zerobillion.ai", "url": "https://www.zerobillion.ai" },
+  "homepage": "https://wandera.ai/mcp",
+  "license": "MIT",
+  "keywords": ["video", "ai-video", "seedance", "kling", "veo", "meta-ads", "marketing"]
+}

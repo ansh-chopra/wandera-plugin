@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "wandera": {
+      "type": "http",
+      "url": "https://api.wandera.ai/mcp"
+    }
+  }
+}
